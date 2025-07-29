@@ -45,7 +45,6 @@ public class AdminController {
         admin.setUsername(adminDetails.getUsername());
         admin.setEmail(adminDetails.getEmail());
         admin.setPassword(adminDetails.getPassword());
-        admin.setState(adminDetails.isState());
         admin.setRole(adminDetails.getRole());
         admin.setSubRole(adminDetails.getSubRole());
         return repository.save(admin);

@@ -18,8 +18,6 @@ public class Employee extends User{
 
     private String subRole;
 
-    private boolean state;
-
     private LocalDate dataDeContratacao;
 
 }

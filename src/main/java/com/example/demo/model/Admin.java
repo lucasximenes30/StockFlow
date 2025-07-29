@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,8 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Admin extends User{
 
-    private boolean state;
-    @ElementCollection
-    private List<String> subRole;
+
+    private String subRole;
 
 }
