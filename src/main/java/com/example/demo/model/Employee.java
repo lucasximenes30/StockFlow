@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Employee extends User{
 
-    private String role;
+    private String subRole;
 
     private boolean state;
 

@@ -41,6 +41,7 @@ public class EmployeeController {
         employee.setPassword(employeeDetails.getPassword());
         employee.setState(employeeDetails.isState());
         employee.setRole(employeeDetails.getRole());
+        employee.setSubRole(employeeDetails.getSubRole());
         employee.setDataDeContratacao(employeeDetails.getDataDeContratacao());
         return repository.save(employee);
     }

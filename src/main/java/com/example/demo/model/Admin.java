@@ -20,6 +20,6 @@ public class Admin extends User{
 
     private boolean state;
     @ElementCollection
-    private List<String> role;
+    private List<String> subRole;
 
 }

@@ -10,6 +10,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -27,7 +30,8 @@ public class Product {
     private double priceFinal;
 
     @JsonProperty("profit")
-    public double getPrice(){
-        return (priceFinal - price) * amount;
+    public BigDecimal getPofit(){
+        return BigDecimal.valueOf((priceFinal - price) * amount)
+                .setScale(2, RoundingMode.HALF_UP);
     }
 }
