@@ -19,7 +19,7 @@ import java.util.List;
 public class Admin extends User{
 
     private boolean state;
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection
     private List<String> role;
 
 }
