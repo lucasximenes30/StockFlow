@@ -18,6 +18,6 @@ public class Employee extends User{
 
     private String subRole;
 
-    private LocalDate dataDeContratacao;
+    private LocalDate dateOfHire;
 
 }
