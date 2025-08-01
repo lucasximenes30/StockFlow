@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Admin;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
+import com.example.demo.service.impl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,46 +14,38 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    public EmployeeRepository repository;
+    public EmployeeServiceImpl service;
+
 
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee){
-        return repository.save(employee);
+        return service.create(employee);
     }
 
     @GetMapping
     public List<Employee> getAllEmployees(){
-        return repository.findAll();
+        return service.findAll();
     }
 
     @GetMapping("{id}")
     public Employee getEmployee(@PathVariable long id){
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Funcionário não encontrado!"));
+        return service.findById(id);
     }
 
     @PutMapping("{id}")
     public Employee updateEmployee(@PathVariable long id, @RequestBody Employee employeeDetails) {
-        Employee employee = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Funcionário não encontrado"));
-        employee.setName(employeeDetails.getName());
-        employee.setUsername(employeeDetails.getUsername());
-        employee.setEmail(employeeDetails.getEmail());
-        employee.setPassword(employeeDetails.getPassword());
-        employee.setRole(employeeDetails.getRole());
-        employee.setSubRole(employeeDetails.getSubRole());
-        employee.setDataDeContratacao(employeeDetails.getDataDeContratacao());
-        return repository.save(employee);
+        Employee employee = service.update(id, employeeDetails);
+        return service.create(employee);
     }
 
 
     @DeleteMapping("{id}")
     public void deleteEmployee(@PathVariable long id){
-        repository.deleteById(id);
+        service.delete(id);
     }
 
     @DeleteMapping("/all")
     public void deleteAllEmployee(){
-        repository.deleteAll();
+        service.deleteAll();
     }
 }
