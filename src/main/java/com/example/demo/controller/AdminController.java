@@ -21,13 +21,13 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    public AdminServiceImpl service;
+    public AdminServiceImpl adminService;
     @Autowired
     public EmployeeServiceImpl employeeService;
 
     @PostMapping
     public Admin createAdmin(@RequestBody Admin admin) {
-        return service.create(admin);
+        return adminService.create(admin);
     }
 
     @PostMapping("/employee")
@@ -37,27 +37,27 @@ public class AdminController {
 
     @GetMapping
     public List<Admin> findAllAdmins() {
-        return service.findAll();
+        return adminService.findAll();
     }
 
     @GetMapping("{id}")
     public Admin findAdminById(@PathVariable long id) {
-        return service.findById(id);
+        return adminService.findById(id);
     }
 
     @PutMapping("{id}")
     public Admin updateAdmin(@PathVariable long id, @RequestBody Admin adminDetails) {
-         Admin admin = service.update(id, adminDetails);
-         return service.create(admin);
+         Admin admin = adminService.update(id, adminDetails);
+         return adminService.create(admin);
     }
 
     @DeleteMapping("{id}")
     public void deleteAdmin(@PathVariable long id) {
-        service.delete(id);
+        adminService.delete(id);
     }
 
     @DeleteMapping
     public void deleteAllAdmins() {
-        service.deleteAll();
+        adminService.deleteAll();
     }
 }
