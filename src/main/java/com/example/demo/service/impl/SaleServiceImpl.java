@@ -60,7 +60,7 @@ public class SaleServiceImpl implements SaleService {
     @Override
     public Sale update(long id, Sale saleDetails) {
         Sale sale = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Venda não encontrada"));
 
         sale.setProductsCart(saleDetails.getProductsCart());
         sale.setNameClient(saleDetails.getNameClient());

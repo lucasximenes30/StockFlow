@@ -19,11 +19,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
-
     @Autowired
     public AdminServiceImpl adminService;
-    @Autowired
-    public EmployeeServiceImpl employeeService;
 
     @PostMapping
     public Admin createAdmin(@RequestBody Admin admin) {
@@ -32,7 +29,7 @@ public class AdminController {
 
     @PostMapping("/employee")
     public Employee createEmployee(@RequestBody Employee employee){
-        return employeeService.create(employee);
+        return adminService.createEmployee(employee);
     }
 
     @GetMapping
