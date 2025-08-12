@@ -44,8 +44,13 @@ public class AdminController {
 
     @PutMapping("{id}")
     public Admin updateAdmin(@PathVariable long id, @RequestBody Admin adminDetails) {
-         Admin admin = adminService.update(id, adminDetails);
-         return adminService.create(admin);
+
+         return adminService.update(id, adminDetails);
+    }
+
+    @PutMapping("/employee/{id}")
+    public Employee updateEmployee(@PathVariable long id, @RequestBody Employee employeeDetails){
+        return adminService.updateEmployee(id, employeeDetails);
     }
 
     @DeleteMapping("{id}")

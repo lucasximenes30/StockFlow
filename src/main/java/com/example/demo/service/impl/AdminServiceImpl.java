@@ -16,8 +16,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     public AdminRepository repository;
-    @Autowired
 
+    @Autowired
     public EmployeeServiceImpl employeeService;
 
     @Override
@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin update(@PathVariable long id, @RequestBody Admin adminDetails) {
+    public Admin update(long id, Admin adminDetails) {
         Admin admin = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Admin não encontrado"));
         admin.setName(adminDetails.getName());
@@ -51,6 +51,10 @@ public class AdminServiceImpl implements AdminService {
         admin.setRole(adminDetails.getRole());
         admin.setSubRole(adminDetails.getSubRole());
         return repository.save(admin);
+    }
+
+    public Employee updateEmployee(long id, Employee employeeDetails){
+        return employeeService.update(id, employeeDetails);
     }
 
     @Override
