@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.Admin;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.AdminRepository;
+import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,10 @@ public class AdminServiceImpl implements AdminService {
     public Admin findById(@PathVariable long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Admin não encontrado"));
+    }
+
+    public Employee findEmployeeById(@PathVariable long id) {
+        return employeeService.findById(id);
     }
 
     @Override

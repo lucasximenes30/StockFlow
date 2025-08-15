@@ -25,6 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee create(@RequestBody Employee employee) {
         return employeeRepository.save(employee);
+
     }
 
     @Override
@@ -35,13 +36,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee findById(long id) {
         return employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Funcionario não encontrado."));
+                .orElseThrow(() -> new RuntimeException("Funcionário com o Id +" + id + "não foi encontrado."));
     }
 
     @Override
     public Employee update(@PathVariable long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Funcionário não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Funcionário com o Id +" + id + "não foi encontrado."));
         employee.setName(employeeDetails.getName());
         employee.setUsername(employeeDetails.getUsername());
         employee.setEmail(employeeDetails.getEmail());
